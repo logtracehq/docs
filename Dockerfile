@@ -1,4 +1,4 @@
-FROM floryn90/hugo:0.161.1-alpine AS builder
+FROM floryn90/hugo:0.161.1-ext-alpine AS builder
 
 USER hugo
 
