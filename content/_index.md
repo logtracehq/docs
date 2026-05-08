@@ -32,4 +32,9 @@ Logtrace is built on a multi-tenant architecture where all data is scoped to an 
 
 Official SDKs are available for Go, TypeScript, Python, and PHP. Each SDK exposes the same three primitives: `createEvent`, `createSession`, and `createAuditLog`.
 
-→ [Browse the SDKs](docs/sdks)
+{{< cards >}}
+{{< card link="docs/sdks/go" title="Go" icon="code" >}}
+{{< card link="docs/sdks/typescript" title="TypeScript" icon="code" >}}
+{{< card link="docs/sdks/python" title="Python" icon="code" >}}
+{{< card link="docs/sdks/php" title="PHP" icon="code" >}}
+{{< /cards >}}
