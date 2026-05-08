@@ -1,18 +1,10 @@
 ---
-title: Documentation
-next: first-page
+title: Concepts
+type: docs
+prev: /
+next: docs/primitives
+sidebar:
+  open: true
 ---
 
-This is a demo of the theme's documentation layout.
-
-## Hello, World!
-
-```go {filename="main.go"}
-package main
-
-import "fmt"
-
-func main() {
-    fmt.Println("Hello, World!")
-}
-```
+Core concepts and architecture behind Logtrace.
