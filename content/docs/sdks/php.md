@@ -45,11 +45,3 @@ $client->createAuditLog([
     'metadata'  => ['plan' => 'pro', 'source' => 'web'],
 ]);
 ```
-
-## Custom Base URL
-
-You can point the client at a self-hosted instance:
-
-```php
-$client = new Logtrace('your-api-key', 'https://your-instance.com/v1/developers');
-```
