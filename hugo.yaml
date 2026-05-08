@@ -1,5 +1,5 @@
 # Hugo configuration file
-title: My Site
+title: Logtrace - Audit, Session and Event Logging in Any Programming Language
 
 # import hextra as module
 module:
