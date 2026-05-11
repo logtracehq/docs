@@ -19,12 +19,7 @@ Logtrace provides three core logging primitives — **Event Tracking**, **Sessio
 → [Learn about the primitives](docs/primitives)
 
 ---
-
-## Architecture
-
-Logtrace is built on a multi-tenant architecture where all data is scoped to an organization. It exposes a RESTful API with API key and session-based authentication, backed by PostgreSQL with cursor-based pagination and date-range filtering.
-
-→ [Read about the architecture](docs/architecture)
+ 
 
 ---
 

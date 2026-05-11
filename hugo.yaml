@@ -33,11 +33,20 @@ menu:
       url: "https://github.com/logtracehq/docs"
       params:
         icon: github
+    - name: Discord
+      weight: 6
+      url: "https://discord.gg/JmP3JuFZXU"
+      params:
+        icon: discord
 
 params:
   navbar:
-    displayTitle: true
-    displayLogo: false
+    displayTitle: false
+    displayLogo: true
+    logo:
+      path: images/logtrace_icon.webp
+      alt: Logtrace Logo
+      height: 60
 
   footer:
     displayCopyright: false

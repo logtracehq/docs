@@ -1,0 +1,8 @@
+/* Navbar logo */
+.hx\:mr-2[alt="Logo"],
+.hx\:mr-2[alt="Dark Logo"] {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    transition: opacity 0.2s ease;
+}

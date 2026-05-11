@@ -2,6 +2,7 @@
 title: PHP SDK
 type: docs
 prev: docs/sdks/python
+next: docs/changelog
 ---
 
 ## Install
