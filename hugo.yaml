@@ -18,9 +18,6 @@ markup:
 
 menu:
   main:
-    - name: About
-      pageRef: /about
-      weight: 2
     - name: Contact ↗
       url: "https://github.com/logtracehq"
       weight: 3
