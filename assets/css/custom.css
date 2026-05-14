@@ -1,3 +1,16 @@
+/* Brand colors */
+:root {
+    --color-secondary: #f8f6eb;
+    --color-primary: #6366F1;
+    --color-tertiary: #b0b0b0;
+    --color-black: #212121;
+
+    /* Hextra theme primary color (#6366F1) */
+    --primary-hue: 239deg;
+    --primary-saturation: 83%;
+    --primary-lightness: 67%;
+}
+
 /* Navbar logo */
 .hx\:mr-2[alt="Logo"],
 .hx\:mr-2[alt="Dark Logo"] {
