@@ -1,7 +1,7 @@
 ---
 title: Logtrace Documentation
 type: docs
-next: docs/primitives
+next: primitives
 ---
 
 ## What is Logtrace?
@@ -16,7 +16,7 @@ Logtrace is designed for multi-tenant SaaS products and is compliance-ready out 
 
 Logtrace provides three core logging primitives — **Event Tracking**, **Session Logging**, and **Audit Logs** — that together form a complete audit trail for your application.
 
-→ [Learn about the primitives](docs/primitives)
+→ [Learn about the primitives](primitives)
 
 ---
  
@@ -28,8 +28,8 @@ Logtrace provides three core logging primitives — **Event Tracking**, **Sessio
 Official SDKs are available for Go, TypeScript, Python, and PHP. Each SDK exposes the same three primitives: `createEvent`, `createSession`, and `createAuditLog`.
 
 {{< cards >}}
-{{< card link="docs/sdks/go" title="Go" icon="code" >}}
-{{< card link="docs/sdks/typescript" title="TypeScript" icon="code" >}}
-{{< card link="docs/sdks/python" title="Python" icon="code" >}}
-{{< card link="docs/sdks/php" title="PHP" icon="code" >}}
+{{< card link="sdks/go" title="Go" icon="code" >}}
+{{< card link="sdks/typescript" title="TypeScript" icon="code" >}}
+{{< card link="sdks/python" title="Python" icon="code" >}}
+{{< card link="sdks/php" title="PHP" icon="code" >}}
 {{< /cards >}}

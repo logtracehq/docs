@@ -1,8 +1,8 @@
 ---
 title: Event Tracking
 type: docs
-prev: docs/primitives
-next: docs/primitives/sessions
+prev: primitives
+next: primitives/sessions
 ---
 
 ## What is an Event?

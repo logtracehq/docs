@@ -1,8 +1,8 @@
 ---
 title: Go SDK
 type: docs
-prev: docs/sdks
-next: docs/sdks/typescript
+prev: sdks
+next: sdks/typescript
 ---
 
 ## Install

@@ -1,8 +1,8 @@
 ---
 title: Audit Logs
 type: docs
-prev: docs/primitives/sessions
-next: docs/architecture
+prev: primitives/sessions
+next: architecture
 ---
 
 ## What is an Audit Log?

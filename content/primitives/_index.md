@@ -1,8 +1,8 @@
 ---
 title: Logging Primitives
 type: docs
-prev: docs/
-next: docs/primitives/events
+prev: /
+next: primitives/events
 sidebar:
   open: true
 ---

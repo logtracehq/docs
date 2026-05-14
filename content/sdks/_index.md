@@ -1,8 +1,8 @@
 ---
 title: SDKs
 type: docs
-prev: docs/architecture
-next: docs/sdks/go
+prev: architecture
+next: sdks/go
 sidebar:
   open: true
 ---

@@ -1,8 +1,8 @@
 ---
 title: Session Logging
 type: docs
-prev: docs/primitives/events
-next: docs/primitives/audit-logs
+prev: primitives/events
+next: primitives/audit-logs
 ---
 
 ## What is a Session?

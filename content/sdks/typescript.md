@@ -1,8 +1,8 @@
 ---
 title: TypeScript SDK
 type: docs
-prev: docs/sdks/go
-next: docs/sdks/python
+prev: sdks/go
+next: sdks/python
 ---
 
 ## Install

@@ -1,7 +1,7 @@
 ---
 title: Changelog
 type: docs
-prev: docs/sdks/php
+prev: sdks/php
 ---
 
 Track notable documentation and product updates here.

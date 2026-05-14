@@ -1,8 +1,8 @@
 ---
 title: Python SDK
 type: docs
-prev: docs/sdks/typescript
-next: docs/sdks/php
+prev: sdks/typescript
+next: sdks/php
 description: Official Python SDK for Logtrace. Zero external dependencies.
 ---
 
