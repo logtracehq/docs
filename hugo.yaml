@@ -18,8 +18,11 @@ markup:
 
 menu:
   main:
-    - name: Contact ↗
-      url: "https://github.com/logtracehq"
+    - name: API Keys
+      url: "https://app.logtracehq.com/api-keys"
+      weight: 1
+    - name: Contact
+      url: "mailto:team@logtracehq.com"
       weight: 3
     - name: Search
       weight: 4

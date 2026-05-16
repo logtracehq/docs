@@ -8,7 +8,7 @@ next: primitives
 
 Logtrace is a secure audit trail and logging platform built for compliance and security. It gives developers and organizations a simple API to capture, store, and query records of everything that happens in their systems — who did what, when, from where, and how.
 
-Logtrace is designed for multi-tenant SaaS products and is compliance-ready out of the box, targeting frameworks such as **SOC 2**, **GDPR**, and **HIPAA**.
+Logtrace is designed for multi-tenant SaaS products and appications (web or mobile) and is compliance-ready out of the box, targeting frameworks such as **SOC 2**, **GDPR**, and **HIPAA**.
 
 ---
 
@@ -19,7 +19,6 @@ Logtrace provides three core logging primitives — **Event Tracking**, **Sessio
 → [Learn about the primitives](primitives)
 
 ---
- 
 
 ---
 
