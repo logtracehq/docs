@@ -42,24 +42,50 @@ Useful for tracking every meaningful interaction a user or service has with your
 {{< tab >}}
 
 ```go
+package main
+
 import (
-    "context"
-    logtrace "github.com/logtracehq/logtrace-go"
+	"log"
+	"net/http"
+	"os"
+
+	_ "github.com/joho/godotenv/autoload"
+
+	logtrace "github.com/logtracehq/logtrace-go"
 )
 
-client := logtrace.New(os.Getenv("LOGTRACE_API_KEY"))
+func main() {
+	client, err := logtrace.New(os.Getenv("API_KEY"))
+	if err != nil {
+		log.Fatalf("Failed to create LogTrace client: %v", err)
+	}
 
-client.CreateEvent(context.Background(), &logtrace.CreateEventRequest{
-    ActionName:      "user.login",
-    HTTPMethod:      "POST",
-    HTTPStatus:      "200",
-    Endpoint:        "/auth/login",
-    ClientIP:        "203.0.113.42",
-    ClientUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
-    UserID:          "user_123",
-    Username:        "jane.doe",
-    Metadata:        map[string]any{"plan": "pro", "source": "web"},
-})
+	mux := http.NewServeMux()
+	mux.HandleFunc("/run", func(w http.ResponseWriter, r *http.Request) {
+		lc := logtrace.FromContext(r.Context(), client)
+
+		_, err := lc.CreateEvent(r.Context(), &logtrace.CreateEventRequest{
+			ActionName: "user.login",
+			UserID:     "12345",
+			UserName:   "jane_doe",
+			Type:       "user event",
+			Metadata: logtrace.Metadata{
+				"action":      "login",
+				"type":        "user",
+				"description": "User logged in successfully",
+			},
+		})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("done"))
+	})
+
+	log.Fatal(http.ListenAndServe(":5000", logtrace.Logger(client)(mux)))
+}
 ```
 
 {{< /tab >}}

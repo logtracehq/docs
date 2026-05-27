@@ -30,21 +30,48 @@ Records user login and logout events enriched with device information, IP addres
 {{< tab >}}
 
 ```go
+
+package main
+
 import (
-    "context"
-    "time"
-    logtrace "github.com/logtracehq/logtrace-go"
+	"log"
+	"net/http"
+	"os"
+	"time"
+
+	_ "github.com/joho/godotenv/autoload"
+
+	logtrace "github.com/logtracehq/logtrace-go"
 )
 
-client := logtrace.New(os.Getenv("LOGTRACE_API_KEY"))
+func main() {
+	client, err := logtrace.New(os.Getenv("API_KEY"))
+	if err != nil {
+		log.Fatalf("Failed to create LogTrace client: %v", err)
+	}
 
-client.CreateSession(context.Background(), &logtrace.CreateSessionRequest{
-    LoginAt:    time.Now(),
-    Status:     "ACTIVE",
-    UserID:     "user_123",
-    IPAddress:  "203.0.113.42",
-    DeviceInfo: "Chrome 120 on macOS",
-})
+	mux := http.NewServeMux()
+	mux.HandleFunc("/run", func(w http.ResponseWriter, r *http.Request) {
+		lc := logtrace.FromContext(r.Context(), client)
+		// Create a session
+		_, err = lc.CreateSession(r.Context(), &logtrace.CreateSessionRequest{
+			LoginAt:  time.Now(),
+			Status:   "active",
+			UserID:   "user_23232",
+			Token:    "fdffdfdfdfdt",
+			UserName: "jane_doe",
+		})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("done"))
+	})
+
+	log.Fatal(http.ListenAndServe(":5000", logtrace.Logger(client)(mux)))
+}
 ```
 
 {{< /tab >}}

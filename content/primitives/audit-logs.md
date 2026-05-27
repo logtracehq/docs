@@ -39,25 +39,53 @@ Suitable for representing anything from a database query to a configuration chan
 {{< tab >}}
 
 ```go
+
+package main
+
 import (
-    "context"
-    logtrace "github.com/logtracehq/logtrace-go"
+	"log"
+	"net/http"
+	"os"
+	"time"
+
+	_ "github.com/joho/godotenv/autoload"
+
+	logtrace "github.com/logtracehq/logtrace-go"
 )
 
-client := logtrace.New(os.Getenv("LOGTRACE_API_KEY"))
+func main() {
+	client, err := logtrace.New(os.Getenv("API_KEY"))
+	if err != nil {
+		log.Fatalf("Failed to create LogTrace client: %v", err)
+	}
 
-client.CreateAuditLog(context.Background(), &logtrace.CreateAuditLogRequest{
-    Action:    "invoice.deleted",
-    Timestamp: "2024-01-15T10:30:00Z",
-    UserID:    "user_123",
-    IPAddress: "203.0.113.42",
-    Metadata:  map[string]any{
-        "invoice_id": "inv_456",
-        "amount":     9900,
-        "before":     map[string]any{"status": "active"},
-        "after":      map[string]any{"status": "deleted"},
-    },
-})
+	mux := http.NewServeMux()
+	mux.HandleFunc("/run", func(w http.ResponseWriter, r *http.Request) {
+		lc := logtrace.FromContext(r.Context(), client)
+
+		// Create an audit log
+		_, err = lc.CreateAuditLog(r.Context(), &logtrace.CreateAuditLogRequest{
+			Action:    "user.deleted",
+			Timestamp: time.Now().Format(time.RFC3339),
+			UserName:  "jane_doe",
+			Metadata: logtrace.Metadata{
+				"action":      "deletion",
+				"type":        "user",
+				"description": "User account was deleted",
+			},
+		})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("done"))
+	})
+
+	log.Fatal(http.ListenAndServe(":5000", logtrace.Logger(client)(mux)))
+}
+
 ```
 
 {{< /tab >}}
