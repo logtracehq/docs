@@ -6,7 +6,7 @@ prev: sdks/php
 
 Track notable documentation and product updates here.
 
-## v0.1.1 — May 11, 2026
+## v0.0.1 — June 4<sup>th</sup> 2026
 
 ### Added
 
@@ -14,8 +14,10 @@ Track notable documentation and product updates here.
 
 - **Go SDK** (`github.com/logtracehq/logtrace-go`) — official Go client with support for `CreateEvent`, `CreateSession`, and `CreateAuditLog`.
 
-- **TypeScript SDK** (`logtrace-ts`) — official TypeScript/Node.js client with full async/await support for all three primitives.
+- **TypeScript SDK** (`@logtracehq/logtrace-node`) — official TypeScript/Node.js client with full async/await support for all three primitives.
+
 - **Python SDK** (`logtrace-py`) — zero external dependencies. Supports `create_event`, `create_session`, and `create_audit_log`.
+
 - **PHP SDK** (`logtracehq/logtrace-php`) — Composer package exposing `createEvent`, `createSession`, and `createAuditLog`.
 
 ## Format

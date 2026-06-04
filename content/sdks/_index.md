@@ -11,7 +11,7 @@ Official SDKs are available for four languages. Each SDK exposes the same three 
 
 {{< cards >}}
 {{< card link="go" title="Go" icon="code" >}}
-{{< card link="typescript" title="TypeScript" icon="code" >}}
+{{< card link="typescript" title="Nodejs" icon="code" >}}
 {{< card link="python" title="Python" icon="code" >}}
 {{< card link="php" title="PHP" icon="code" >}}
 {{< /cards >}}

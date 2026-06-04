@@ -14,35 +14,21 @@ composer require logtracehq/logtrace-php
 ## Usage
 
 ```php
-use Logtrace\Logtrace;
-require 'vendor/autoload.php';
+use Logtrace\Client;
+use Logtrace\CreateEventRequest;
 
-$client = new Logtrace(getenv('LOGTRACE_API_KEY'));
+$client = new Client(getenv('LOGTRACE_API_KEY'));
 
-// Track an event
-$client->createEvent([
-    'action_name'       => 'user_signup',
-    'user_id'           => 'user_123',
-    'http_method'       => 'POST',
-    'http_status'       => '200',
-    'client_ip'         => '192.168.1.1',
-    'client_user_agent' => 'Mozilla/5.0',
-]);
+$client->createEvent(new CreateEventRequest(
+    actionName:      'user.signup',
+    userId :       'user_123',
+    type:         'authentication',
+    metadata:     [
+        'plan' => 'pro',
+        'referrer' => 'google',
+    ],
+));
 
-// Create a session
-$client->createSession([
-    'login_at'    => date('c'),
-    'status'      => 'ACTIVE',
-    'user_id'     => 'user_123',
-    'ip_address'  => '192.168.1.1',
-    'device_info' => 'Chrome on macOS',
-]);
-
-// Create an audit log
-$client->createAuditLog([
-    'action'    => 'user.signup',
-    'timestamp' => date('c'),
-    'user_id'   => 'user_123',
-    'metadata'  => ['plan' => 'pro', 'source' => 'web'],
-]);
+$client->createSession(new CreateSessionRequest(...));
+$client->createAuditLog(new CreateAuditLogRequest(...));
 ```

@@ -27,10 +27,9 @@ client := logtrace.New(os.Getenv("LOGTRACE_API_KEY"))
 client.CreateEvent(context.Background(), &logtrace.CreateEventRequest{
     ActionName:      "user_signup",
     UserID:          "user_123",
-    HTTPMethod:      "POST",
-    HTTPStatus:      "200",
-    ClientIP:        "192.168.1.1",
-    ClientUserAgent: "Mozilla/5.0",
+    UserName:        "jane.doe",
+    Type:            "authentication",
+    Metadata:        map[string]any{"plan": "pro", "referrer": "
 })
 
 // Create a session
@@ -38,8 +37,8 @@ client.CreateSession(context.Background(), &logtrace.CreateSessionRequest{
     LoginAt:    time.Now(),
     Status:     "ACTIVE",
     UserID:     "user_123",
-    IPAddress:  "192.168.1.1",
-    DeviceInfo: "Chrome on macOS",
+    UserName:   "jane.doe",
+
 })
 
 // Create an audit log

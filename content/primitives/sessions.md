@@ -26,7 +26,7 @@ Each session is enriched with the client's IP address and device information, an
 
 Records user login and logout events enriched with device information, IP address, and location. Sessions carry a status (`ACTIVE` / `INACTIVE`), making it easy to audit access history and detect anomalous activity.
 
-{{< tabs items="Go,PHP,TypeScript,cURL" >}}
+{{< tabs items="Go,PHP,Node.js,cURL" >}}
 {{< tab >}}
 
 ```go
@@ -58,7 +58,7 @@ func main() {
 			LoginAt:  time.Now(),
 			Status:   "active",
 			UserID:   "user_23232",
-			Token:    "fdffdfdfdfdt",
+			Token:    "efb2c9a1-1234-5678-90ab-cdef12345678",
 			UserName: "jane_doe",
 		})
 		if err != nil {
@@ -87,8 +87,6 @@ $client->createSession([
     'login_at'    => date('c'),
     'status'      => 'ACTIVE',
     'user_id'     => 'user_123',
-    'ip_address'  => '203.0.113.42',
-    'device_info' => 'Chrome 120 on macOS',
 ]);
 ```
 
@@ -104,8 +102,6 @@ await client.createSession({
   login_at: new Date().toISOString(),
   status: "ACTIVE",
   user_id: "user_123",
-  ip_address: "203.0.113.42",
-  device_info: "Chrome 120 on macOS",
 });
 ```
 
@@ -120,8 +116,6 @@ curl -X POST https://api.logtracehq.com/v1/sessions \
     "login_at": "2024-01-15T10:30:00Z",
     "status": "ACTIVE",
     "user_id": "user_123",
-    "ip_address": "203.0.113.42",
-    "device_info": "Chrome 120 on macOS"
   }'
 ```
 

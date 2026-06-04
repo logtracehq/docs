@@ -35,7 +35,7 @@ Explicit, structured audit trail entries designed for compliance use cases. Each
 
 Suitable for representing anything from a database query to a configuration change to a billing action.
 
-{{< tabs items="Go,PHP,TypeScript,cURL" >}}
+{{< tabs items="Go,PHP,Node.js,cURL" >}}
 {{< tab >}}
 
 ```go
@@ -101,7 +101,6 @@ $client->createAuditLog([
     'action'     => 'invoice.deleted',
     'timestamp'  => '2024-01-15T10:30:00Z',
     'user_id'    => 'user_123',
-    'ip_address' => '203.0.113.42',
     'metadata'   => [
         'invoice_id' => 'inv_456',
         'amount'     => 9900,
@@ -115,7 +114,7 @@ $client->createAuditLog([
 {{< tab >}}
 
 ```typescript
-import { Logtrace } from "logtrace-ts";
+import { Logtrace } from "@logtracehq/logtrace-node";
 
 const client = new Logtrace(process.env.LOGTRACE_API_KEY);
 
@@ -123,7 +122,6 @@ await client.createAuditLog({
   action: "invoice.deleted",
   timestamp: "2024-01-15T10:30:00Z",
   user_id: "user_123",
-  ip_address: "203.0.113.42",
   metadata: {
     invoice_id: "inv_456",
     amount: 9900,
@@ -144,7 +142,6 @@ curl -X POST https://api.logtracehq.com/v1/audit-logs \
     "action": "invoice.deleted",
     "timestamp": "2024-01-15T10:30:00Z",
     "user_id": "user_123",
-    "ip_address": "203.0.113.42",
     "metadata": {
       "invoice_id": "inv_456",
       "amount": 9900,

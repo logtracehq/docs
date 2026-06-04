@@ -28,7 +28,7 @@ Official SDKs are available for Go, TypeScript, Python, and PHP. Each SDK expose
 
 {{< cards >}}
 {{< card link="sdks/go" title="Go" icon="code" >}}
-{{< card link="sdks/typescript" title="TypeScript" icon="code" >}}
+{{< card link="sdks/node" title="Node.js" icon="code" >}}
 {{< card link="sdks/python" title="Python" icon="code" >}}
 {{< card link="sdks/php" title="PHP" icon="code" >}}
 {{< /cards >}}

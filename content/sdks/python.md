@@ -14,38 +14,82 @@ Zero external dependencies.
 pip install logtrace-py
 ```
 
-## Usage
+# Usage
 
 ```python
-from logtrace import Logtrace, CreateEventRequest, CreateSessionRequest, CreateAuditLogRequest
-import os
+from logtrace_py import Client, CreateEventRequest
 
-client = Logtrace(api_key=os.environ['LOGTRACE_API_KEY'])
+client = Client(api_key=os.environ["LOGTRACE_API_KEY"])
 
-# Track an event
 client.create_event(CreateEventRequest(
-    action_name='user_signup',
-    user_id='user_123',
-    http_method='POST',
-    http_status='200',
-    client_ip='192.168.1.1',
-    client_user_agent='Mozilla/5.0'
+    action_name="user.signup",
+    user_id="user_123",
+    username="jane.doe",
+    metadata={"plan": "pro", "referrer": "google"},
 ))
 
-# Create a session
-client.create_session(CreateSessionRequest(
-    login_at='2024-01-15T10:30:00Z',
-    status='ACTIVE',
-    user_id='user_123',
-    ip_address='192.168.1.1',
-    device_info='Chrome on macOS'
-))
+client.create_session(CreateSessionRequest(...))
+client.create_audit_log(CreateAuditLogRequest(...))
+```
 
-# Create an audit log
-client.create_audit_log(CreateAuditLogRequest(
-    action='user.signup',
-    timestamp='2024-01-15T10:30:00Z',
-    user_id='user_123',
-    metadata={'plan': 'pro', 'source': 'web'}
-))
+### Async
+
+```python
+from logtrace_py import AsyncClient
+
+async with AsyncClient(api_key=os.environ["LOGTRACE_API_KEY"]) as client:
+    await client.create_event(CreateEventRequest(...))
+```
+
+## Middleware
+
+Automatically attaches request context (IP, method, endpoint, headers, status code) to every call made inside a handler.
+
+**WSGI (Flask)**
+
+```python
+from logtrace_py import WsgiMiddleware
+
+app.wsgi_app = WsgiMiddleware(app.wsgi_app, client)
+```
+
+**ASGI (FastAPI / Starlette)**
+
+```python
+from logtrace_py import AsgiMiddleware
+
+app.add_middleware(AsgiMiddleware, client=client)
+```
+
+**Django** — add to `settings.py`:
+
+```python
+import logtrace_py
+LOGTRACE_CLIENT = logtrace_py.Client(api_key=os.environ["LOGTRACE_API_KEY"])
+
+MIDDLEWARE = [
+    "logtrace_py.middleware.DjangoMiddleware",
+    ...
+]
+```
+
+Inside any handler:
+
+```python
+from logtrace_py import from_context
+
+rc = from_context(client)
+rc.create_event(CreateEventRequest(...))              # sync
+await rc.async_create_event(CreateEventRequest(...))  # async
+```
+
+## Error handling
+
+```python
+from logtrace_py import LogtraceError
+
+try:
+    client.create_event(req)
+except LogtraceError as e:
+    print(e.status_code, e)
 ```
