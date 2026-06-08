@@ -20,9 +20,9 @@ const client = Logtrace.new(process.env.LOGTRACE_API_KEY!);
 
 // Track an application event
 await client.createEvent({
-  actionName: "invoice.created",
-  userId: "user_123",
-  userName: "jane.doe",
+  name: "invoice.created",
+  user_id: "user_123",
+  username: "jane.doe",
   metadata: {
     invoiceId: "inv_456",
     amount: 250000,
@@ -32,7 +32,7 @@ await client.createEvent({
 
 // Track a user session
 await client.createSession({
-  userId: "user_123",
+  user_id: "user_123",
   loginAt: new Date(),
   status: "active",
 });
@@ -41,8 +41,8 @@ await client.createSession({
 await client.createAuditLog({
   action: "user.updated",
   timestamp: new Date(),
-  userId: "user_123",
-  userName: "jane.doe",
+  user_id: "user_123",
+  username: "jane.doe",
   metadata: {
     role: {
       old: "user",
@@ -70,15 +70,15 @@ app.post("/login", async (req, res) => {
   const logtrace = fromContext(client);
 
   await logtrace.createSession({
-    userId: "user_123",
+    user_id: "user_123",
     loginAt: new Date(),
     status: "active",
   });
 
   await logtrace.createEvent({
-    actionName: "user.login",
-    userName: "jane.doe",
-    userId: "user_123",
+    name: "user.login",
+    username: "jane.doe",
+    user_id: "user_123",
   });
 
   res.json({ ok: true });

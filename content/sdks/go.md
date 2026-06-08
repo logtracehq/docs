@@ -25,7 +25,7 @@ client := logtrace.New(os.Getenv("LOGTRACE_API_KEY"))
 
 // Track an event
 client.CreateEvent(context.Background(), &logtrace.CreateEventRequest{
-    ActionName:      "user_signup",
+    Name:      "user_signup",
     UserID:          "user_123",
     UserName:        "jane.doe",
     Type:            "authentication",
@@ -43,7 +43,7 @@ client.CreateSession(context.Background(), &logtrace.CreateSessionRequest{
 
 // Create an audit log
 client.CreateAuditLog(context.Background(), &logtrace.CreateAuditLogRequest{
-    Action:    "user.signup",
+    Name:    "user.signup",
     Timestamp: "2024-01-15T10:30:00Z",
     UserID:    "user_123",
     Metadata:  map[string]any{"plan": "pro", "source": "web"},

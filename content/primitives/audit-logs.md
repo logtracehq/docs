@@ -35,7 +35,7 @@ Explicit, structured audit trail entries designed for compliance use cases. Each
 
 Suitable for representing anything from a database query to a configuration change to a billing action.
 
-{{< tabs items="Go,PHP,Node.js,cURL" >}}
+{{< tabs name="Go,PHP,Node.js,cURL" >}}
 {{< tab >}}
 
 ```go
@@ -65,7 +65,7 @@ func main() {
 
 		// Create an audit log
 		_, err = lc.CreateAuditLog(r.Context(), &logtrace.CreateAuditLogRequest{
-			Action:    "user.deleted",
+			Name:    "user.deleted",
 			Timestamp: time.Now().Format(time.RFC3339),
 			UserName:  "jane_doe",
 			Metadata: logtrace.Metadata{

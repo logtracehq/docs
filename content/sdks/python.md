@@ -22,7 +22,7 @@ from logtrace_py import Client, CreateEventRequest
 client = Client(api_key=os.environ["LOGTRACE_API_KEY"])
 
 client.create_event(CreateEventRequest(
-    action_name="user.signup",
+    name="user.signup",
     user_id="user_123",
     username="jane.doe",
     metadata={"plan": "pro", "referrer": "google"},

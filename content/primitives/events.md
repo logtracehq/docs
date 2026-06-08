@@ -38,7 +38,7 @@ Captures HTTP activity across your application. Each event records:
 
 Useful for tracking every meaningful interaction a user or service has with your system.
 
-{{< tabs items="Go,PHP,Node.js,cURL" >}}
+{{< tabs name="Go,PHP,Node.js,cURL" >}}
 {{< tab >}}
 
 ```go
@@ -65,7 +65,7 @@ func main() {
 		lc := logtrace.FromContext(r.Context(), client)
 
 		_, err := lc.CreateEvent(r.Context(), &logtrace.CreateEventRequest{
-			ActionName: "user.login",
+			Name: "user.login",
 			UserID:     "12345",
 			UserName:   "jane_doe",
 			Type:       "user event",
@@ -98,7 +98,7 @@ require 'vendor/autoload.php';
 $client = new Logtrace(getenv('LOGTRACE_API_KEY'));
 
 $client->createEvent([
-    'action_name'       => 'user.login',
+    'name'       => 'user.login',
     'user_id
     'username'          => 'jane.doe',
     'metadata'          => ['plan' => 'pro', 'source' => 'web'],
@@ -114,7 +114,7 @@ import { Logtrace } from "logtrace-ts";
 const client = new Logtrace(process.env.LOGTRACE_API_KEY);
 
 await client.createEvent({
-  action_name: "user.login",
+  name: "user.login",
   user_id: "user_123",
   username: "jane.doe",
   metadata: { plan: "pro", source: "web" },
@@ -129,7 +129,7 @@ curl -X POST https://api.logtracehq.com/v1/events \
   -H "Authorization: Bearer $LOGTRACE_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "action_name": "user.login",
+    "name": "user.login",
     "user_id": "user_123",
     "username": "jane.doe",
     "metadata": { "plan": "pro", "source": "web" }

@@ -20,7 +20,7 @@ use Logtrace\CreateEventRequest;
 $client = new Client(getenv('LOGTRACE_API_KEY'));
 
 $client->createEvent(new CreateEventRequest(
-    actionName:      'user.signup',
+    name:      'user.signup',
     userId :       'user_123',
     type:         'authentication',
     metadata:     [

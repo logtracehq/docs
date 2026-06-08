@@ -26,7 +26,7 @@ Each session is enriched with the client's IP address and device information, an
 
 Records user login and logout events enriched with device information, IP address, and location. Sessions carry a status (`ACTIVE` / `INACTIVE`), making it easy to audit access history and detect anomalous activity.
 
-{{< tabs items="Go,PHP,Node.js,cURL" >}}
+{{< tabs name="Go,PHP,Node.js,cURL" >}}
 {{< tab >}}
 
 ```go
