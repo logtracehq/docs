@@ -7,13 +7,13 @@ next: primitives/sessions
 
 ## What is an Event?
 
-An **event** is a record of a single, meaningful action that occurred in your application — typically tied to an HTTP request. Think of it as answering the question: _"who did what, when, and how?"_
+An **event** is a record of a single, meaningful name that occurred in your application — typically tied to an HTTP request. Think of it as answering the question: _"who did what, when, and how?"_
 
 Events are the highest-volume primitive. You would create one for every significant operation your application handles: a user logging in, a file being uploaded, an order being placed, a webhook being received.
 
 **Examples:**
 
-| Action             | Trigger                           |
+| name               | Trigger                           |
 | ------------------ | --------------------------------- |
 | `user.login`       | A user authenticates successfully |
 | `invoice.created`  | A new invoice is generated        |
@@ -29,14 +29,14 @@ Each event carries the HTTP context (method, status, endpoint), the client's IP 
 
 Captures HTTP activity across your application. Each event records:
 
-- Action name (e.g. `user.login`, `invoice.created`)
+- name name (e.g. `user.login`, `invoice.created`)
 - HTTP method, status code, and endpoint
 - Client IP address and user agent
 - Geolocation derived from IP
 - User identity (username / user ID)
 - Arbitrary JSON metadata
 
-Useful for tracking every meaningful interaction a user or service has with your system.
+Useful for tracking every meaningful intername a user or service has with your system.
 
 {{< tabs name="Go,PHP,Node.js,cURL" >}}
 {{< tab >}}
@@ -70,7 +70,7 @@ func main() {
 			UserName:   "jane_doe",
 			Type:       "user event",
 			Metadata: logtrace.Metadata{
-				"action":      "login",
+				"name":      "login",
 				"type":        "user",
 				"description": "User logged in successfully",
 			},

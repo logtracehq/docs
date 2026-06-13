@@ -33,13 +33,13 @@ await client.createEvent({
 // Track a user session
 await client.createSession({
   user_id: "user_123",
-  loginAt: new Date(),
+  login_at: new Date(),
   status: "active",
 });
 
 // Create an audit log entry
 await client.createAuditLog({
-  action: "user.updated",
+  name: "user.updated",
   timestamp: new Date(),
   user_id: "user_123",
   username: "jane.doe",
@@ -71,7 +71,7 @@ app.post("/login", async (req, res) => {
 
   await logtrace.createSession({
     user_id: "user_123",
-    loginAt: new Date(),
+    login_at: new Date(),
     status: "active",
   });
 
@@ -96,8 +96,8 @@ const client = Logtrace.new(process.env.LOGTRACE_API_KEY!);
 
 async function processInvoice(invoiceId: string) {
   await client.createEvent({
-    eventName: "invoice.processing.started",
-    source: "invoice-worker",
+    name: "invoice.processing.started",
+    type: "invoice-worker",
     metadata: {
       invoiceId,
     },
@@ -106,8 +106,8 @@ async function processInvoice(invoiceId: string) {
   // process invoice...
 
   await client.createEvent({
-    eventName: "invoice.processing.completed",
-    source: "invoice-worker",
+    name: "invoice.processing.completed",
+    type: "invoice-worker",
     metadata: {
       invoiceId,
     },
@@ -124,8 +124,8 @@ const client = Logtrace.new(process.env.LOGTRACE_API_KEY!);
 
 try {
   await client.createEvent({
-    eventName: "user.created",
-    source: "api",
+    name: "user.created",
+    type: "api",
   });
 } catch (err) {
   if (err instanceof LogtraceError) {

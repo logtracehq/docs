@@ -29,7 +29,7 @@ client.CreateEvent(context.Background(), &logtrace.CreateEventRequest{
     UserID:          "user_123",
     UserName:        "jane.doe",
     Type:            "authentication",
-    Metadata:        map[string]any{"plan": "pro", "referrer": "
+    Metadata:        map[string]any{"plan": "pro", "referrer": ""
 })
 
 // Create a session

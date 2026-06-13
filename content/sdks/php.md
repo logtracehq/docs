@@ -21,7 +21,7 @@ $client = new Client(getenv('LOGTRACE_API_KEY'));
 
 $client->createEvent(new CreateEventRequest(
     name:      'user.signup',
-    userId :       'user_123',
+    user_id :       'user_123',
     type:         'authentication',
     metadata:     [
         'plan' => 'pro',
