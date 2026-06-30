@@ -16,9 +16,7 @@ Logtrace is designed for multi-tenant SaaS products and appications (web or mobi
 
 Logtrace provides three core logging primitives — **Event Tracking**, **Session Logging**, and **Audit Logs** — that together form a complete audit trail for your application.
 
-→ [Learn about the primitives](primitives)
-
----
+[Learn about the Logtrace primitives](primitives) ⟶
 
 ---
 
