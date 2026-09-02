@@ -30,3 +30,11 @@ Official SDKs are available for Go, TypeScript, Python, and PHP. Each SDK expose
 {{< card link="sdks/python" title="Python" icon="code" >}}
 {{< card link="sdks/php" title="PHP" icon="code" >}}
 {{< /cards >}}
+
+## Self-hosting
+
+Run the Logtrace API and dashboard on your own infrastructure.
+
+{{< cards >}}
+{{< card link="self-hosting" title="Self-host Logtrace" icon="server" subtitle="Deploy the backend, database, Redis, and frontend with your own domains and secrets." >}}
+{{< /cards >}}
